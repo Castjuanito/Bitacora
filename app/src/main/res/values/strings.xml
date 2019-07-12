@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Bitácora Civil</string>
+    <string name="title_activity_alistamiento">AlistamientoActivity</string>
+</resources>
