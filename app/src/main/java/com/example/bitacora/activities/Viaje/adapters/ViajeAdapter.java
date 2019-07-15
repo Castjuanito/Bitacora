@@ -1,4 +1,4 @@
-package com.example.bitacora.activities.Viaje;
+package com.example.bitacora.activities.Viaje.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -18,7 +18,7 @@ public class ViajeAdapter extends BaseAdapter {
     Context context;
     List<Viaje> rowItems;
 
-    ViajeAdapter(Context context, List<Viaje> rowItems) {
+    public ViajeAdapter(Context context, List<Viaje> rowItems) {
         this.context = context;
         this.rowItems = rowItems;
     }

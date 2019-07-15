@@ -1,4 +1,4 @@
-package com.example.bitacora;
+package com.example.bitacora.models;
 
 import java.util.List;
 

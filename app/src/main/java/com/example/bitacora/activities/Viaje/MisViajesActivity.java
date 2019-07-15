@@ -1,4 +1,4 @@
-package com.example.bitacora.activities;
+package com.example.bitacora.activities.Viaje;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.example.bitacora.R;
 import com.example.bitacora.SQLViaje;
+import com.example.bitacora.activities.Viaje.adapters.ViajeAdapter;
 import com.example.bitacora.models.Viaje;
 
 import java.util.ArrayList;

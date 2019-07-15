@@ -1,4 +1,4 @@
-package com.example.bitacora.activities;
+package com.example.bitacora.activities.Viaje;
 
 import android.content.Intent;
 import android.database.Cursor;

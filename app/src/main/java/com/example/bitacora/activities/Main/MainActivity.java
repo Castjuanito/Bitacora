@@ -1,4 +1,4 @@
-package com.example.bitacora.activities;
+package com.example.bitacora.activities.Main;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import com.example.bitacora.R;
 import com.example.bitacora.SQLRegistro;
 import com.example.bitacora.SQLViaje;
+import com.example.bitacora.activities.Viaje.CrearViajeActivity;
+import com.example.bitacora.activities.Viaje.MisViajesActivity;
 
 public class MainActivity extends AppCompatActivity {
 

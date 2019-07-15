@@ -15,19 +15,13 @@
         android:roundIcon="@drawable/escudo_universidad_salle"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecuerdosActivity"></activity>
-        <activity android:name=".PaisajesActivity" />
-        <activity android:name=".MuestrasActivity" />
-        <activity android:name=".MisViajesActivity" />
-        <activity android:name=".InfraestructurasActivity" />
-        <activity android:name=".DetalleViajeActivity" />
-        <activity android:name=".CrearViajeActivity" />
-        <activity android:name=".CrearRecuerdoActivity" />
-        <activity android:name=".CrearPaisajeActivity" />
-        <activity android:name=".CrearMuestrasActivity" />
-        <activity android:name=".CrearInfraestructuraActivity" />
-        <activity android:name=".AlistamientoActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.Registro.RegistroActivy"></activity>
+        <activity android:name=".activities.Viaje.MisViajesActivity" />
+        <activity android:name=".activities.Viaje.DetalleViajeActivity" />
+        <activity android:name=".activities.Viaje.CrearViajeActivity" />
+        <activity android:name=".activities.Registro.CrearRegistroActivity" />
+        <activity android:name=".activities.Alistamiento.AlistamientoActivity" />
+        <activity android:name=".activities.Main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

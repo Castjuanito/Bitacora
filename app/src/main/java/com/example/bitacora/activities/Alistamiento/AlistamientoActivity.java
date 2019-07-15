@@ -1,4 +1,4 @@
-package com.example.bitacora.activities;
+package com.example.bitacora.activities.Alistamiento;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

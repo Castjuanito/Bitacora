@@ -18,7 +18,7 @@ import java.util.List;
 public class DepartamentoAdapter extends ArrayAdapter<Departamento> {
     private List<Departamento> departamentoList = new ArrayList<>();
 
-    DepartamentoAdapter(@NonNull Context context, int resource, int spinnerText, @NonNull List<Departamento> stateList) {
+    public DepartamentoAdapter(@NonNull Context context, int resource, int spinnerText, @NonNull List<Departamento> stateList) {
         super(context, resource, spinnerText, stateList);
         this.departamentoList = stateList;
     }
