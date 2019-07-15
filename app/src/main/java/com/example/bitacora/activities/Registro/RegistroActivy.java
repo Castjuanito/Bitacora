@@ -10,6 +10,6 @@ public class RegistroActivy extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recuerdos);
+        setContentView(R.layout.activity_registros);
     }
 }
