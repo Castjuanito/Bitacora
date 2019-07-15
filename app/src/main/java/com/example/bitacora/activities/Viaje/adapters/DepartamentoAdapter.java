@@ -1,4 +1,4 @@
-package com.example.bitacora;
+package com.example.bitacora.activities.Viaje.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.example.bitacora.R;
+import com.example.bitacora.models.Departamento;
 
 import java.util.ArrayList;
 import java.util.List;

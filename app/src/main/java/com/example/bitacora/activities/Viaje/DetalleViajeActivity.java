@@ -1,4 +1,4 @@
-package com.example.bitacora;
+package com.example.bitacora.activities;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.bitacora.R;
+import com.example.bitacora.SQLViaje;
 
 public class DetalleViajeActivity extends AppCompatActivity {
 

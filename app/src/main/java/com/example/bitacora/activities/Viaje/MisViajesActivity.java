@@ -1,4 +1,4 @@
-package com.example.bitacora;
+package com.example.bitacora.activities;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.example.bitacora.R;
+import com.example.bitacora.SQLViaje;
+import com.example.bitacora.models.Viaje;
 
 import java.util.ArrayList;
 import java.util.List;

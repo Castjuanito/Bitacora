@@ -1,4 +1,4 @@
-package com.example.bitacora;
+package com.example.bitacora.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,6 +13,12 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.bitacora.Departamento.DepartamentoAdapter;
+import com.example.bitacora.activities.Main.MainActivity;
+import com.example.bitacora.models.Departamento;
+import com.example.bitacora.R;
+import com.example.bitacora.SQLViaje;
 
 import org.json.JSONArray;
 import org.json.JSONException;
