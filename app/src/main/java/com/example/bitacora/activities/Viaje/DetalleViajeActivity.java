@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bitacora.R;
 import com.example.bitacora.SQLViaje;
+import com.example.bitacora.activities.Alistamiento.AlistamientoActivity;
 
 public class DetalleViajeActivity extends AppCompatActivity {
 
@@ -19,6 +21,7 @@ public class DetalleViajeActivity extends AppCompatActivity {
     TextView titulo;
     TextView profesor;
     TextView materia;
+    Button buttonAlistamiento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class DetalleViajeActivity extends AppCompatActivity {
         Intent receivedIntent = getIntent();
         selectedID = receivedIntent.getIntExtra("id",-1);
         mSQLViaje = new SQLViaje(this);
+        buttonAlistamiento = (Button) findViewById(R.id.buttonAlistamiento);
 
         titulo = (TextView) findViewById(R.id.textTitulo);
         profesor = (TextView) findViewById(R.id.textViewProfesor);
@@ -48,6 +52,15 @@ public class DetalleViajeActivity extends AppCompatActivity {
             profesor.setText("Profesor: "+prof);
             materia.setText("Materia: "+mat);
         }
+
+        buttonAlistamiento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent editScreenIntent = new Intent(DetalleViajeActivity.this, AlistamientoActivity.class);
+                editScreenIntent.putExtra("id",selectedID);
+                startActivity(editScreenIntent);
+            }
+        });
 
         //Toast.makeText(getApplicationContext(), "Selected ID: " + selectedID, Toast.LENGTH_SHORT).show();
 

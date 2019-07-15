@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.bitacora.SQLAlistamiento;
 import com.example.bitacora.activities.Main.MainActivity;
 import com.example.bitacora.activities.Viaje.adapters.DepartamentoAdapter;
 import com.example.bitacora.models.Departamento;
@@ -38,6 +39,7 @@ public class CrearViajeActivity extends AppCompatActivity {
 
     SQLViaje mSQLViaje;
     Spinner stateSpinner;
+    SQLAlistamiento mSQLAlistamiento;
     Spinner citiesSpinner;
     CalendarView calendario;
     private ProgressDialog pDialog;
@@ -52,6 +54,7 @@ public class CrearViajeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_viaje);
         mSQLViaje = new SQLViaje(this);
+        mSQLAlistamiento = new SQLAlistamiento(this);
         stateSpinner = findViewById(R.id.spinnerDep);
         citiesSpinner = findViewById(R.id.spinnerMun);
         calendario = (CalendarView)findViewById(R.id.calendarView2);
@@ -92,6 +95,11 @@ public class CrearViajeActivity extends AppCompatActivity {
 
                 if (profe.length() != 0 && mat.length() != 0) {
                     int insertData = (int) mSQLViaje.addData(fechaSalida,  mat,  profe,  city+"-"+state.getDepartamentoName(),"-1",  "-1");
+                    int ls1,ls2,a=0;
+                    String st1="Arreglar maleta";
+                    String st2 ="AListar Documentos";
+                    ls1 = (int) mSQLAlistamiento.addData(insertData,st1,0);
+                    ls2 = (int) mSQLAlistamiento.addData(insertData,st2,0);
 
 
                     Intent editScreenIntent = new Intent(CrearViajeActivity.this, DetalleViajeActivity.class);
