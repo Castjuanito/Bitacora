@@ -6,4 +6,149 @@
     android:layout_height="match_parent"
     tools:context="com.example.bitacora.activities.Registro.CrearRegistroActivity">
 
+
+    <TextView
+        android:id="@+id/textTituloCreacionRegistroNuevo"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorSecondary"
+        android:gravity="top|bottom"
+        android:text="Nuevo Registro"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UnknownId"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/buttonCancelarRegistro"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorPrimary"
+        android:text="Cancelar"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonCrearRegistro"
+        app:layout_constraintTop_toTopOf="@+id/buttonCrearRegistro" />
+
+    <Button
+        android:id="@+id/buttonCrearRegistro"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorPrimary"
+        android:text="Crear"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCancelarRegistro"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
+
+    <ScrollView
+        android:id="@+id/scrollCrearRegistro"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCancelarRegistro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTituloCreacionRegistroNuevo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/editTextTituloRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40px"
+                android:layout_marginRight="40px"
+                android:ems="10"
+                android:hint="Título"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/colorSecondary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextDescripcionRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:layout_marginLeft="40px"
+                android:layout_marginTop="70px"
+                android:layout_marginRight="40px"
+                android:ems="10"
+                android:hint="Descripción"
+                android:inputType="textLongMessage"
+                android:textAlignment="center"
+                android:textColor="@color/colorSecondary"
+                android:textStyle="normal" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp">
+
+                <Button
+                    android:id="@+id/buttonAñadirFotosCrearRegistro"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/round_button"
+                    android:text="Foto"
+
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonAñadirAudioCrearRegistro"
+                    app:layout_constraintStart_toEndOf="@+id/buttonAñadirAudioCrearRegistro"
+                    app:layout_constraintTop_toTopOf="@+id/buttonAñadirAudioCrearRegistro" />
+
+                <Button
+                    android:id="@+id/buttonAñadirAudioCrearRegistro"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/round_button"
+                    android:text="Audio"
+                    android:textColor="@android:color/white"
+
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonAñadirFotosCrearRegistro"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+
 </android.support.constraint.ConstraintLayout>

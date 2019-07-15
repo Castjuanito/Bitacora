@@ -75,8 +75,8 @@
                 android:layout_height="29dp" />
 
             <EditText
-                android:id="@+id/editTextMateria"
                 android:layout_width="338dp"
+                android:id="@+id/editTextMateria"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
