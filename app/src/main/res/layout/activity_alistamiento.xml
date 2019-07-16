@@ -1,9 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context="com.example.bitacora.MainActivity$AlistamientoActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textTitulo2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorSecondary"
+        android:gravity="top|bottom"
+        android:text="Alistamiento"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="24dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="426dp"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/AlistListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="43dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextItem"
+            android:layout_width="278dp"
+            android:layout_height="61dp"
+            android:ems="10"
+            android:hint="Nuevo item"
+            android:inputType="textPersonName" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/imageButtonAñadirItem"
+            android:layout_width="72dp"
+            android:layout_height="56dp"
+            android:background="@android:color/white"
+            app:srcCompat="@drawable/ic_plus_symbol" />
+    </LinearLayout>
+</LinearLayout>

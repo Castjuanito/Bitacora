@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.bitacora.MainActivity$CrearViajeActivity">
+    tools:context="com.example.bitacora.activities.Viaje.CrearViajeActivity">
 
     <ScrollView
         android:id="@+id/scrollView3"
@@ -75,8 +75,8 @@
                 android:layout_height="29dp" />
 
             <EditText
-                android:id="@+id/editTextMateria"
                 android:layout_width="338dp"
+                android:id="@+id/editTextMateria"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"

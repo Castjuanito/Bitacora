@@ -14,7 +14,7 @@
         android:layout_marginBottom="2dp"
         android:background="@color/colorSecondary"
         android:gravity="top|bottom"
-        android:text="Mis viajes"
+        android:text="Recuerdos"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="24sp"
@@ -26,7 +26,6 @@
         tools:ignore="UnknownId" />
 
     <ListView
-        android:id="@+id/listViajes"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="1dp"
