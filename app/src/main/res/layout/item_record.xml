@@ -1,82 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="25dp">
+    android:layout_margin="10dp"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fecha"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="45dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ubicación:"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="343dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-5:25"
-        tools:layout_editor_absoluteX="342dp"
-        tools:layout_editor_absoluteY="402dp" />
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Titulo"
+                android:textColor="@color/colorSecondary"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Titulo"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="16dp" />
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fecha"
+                android:textColor="@color/colorSecondary" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="355dp"
-        android:layout_height="243dp"
-        app:srcCompat="@android:drawable/ic_menu_gallery"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="85dp" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp">
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="296dp"
-        android:layout_height="20dp"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="387dp" />
+                <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/imageSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    app:sliderAnimationDuration="600"
+                    app:sliderAutoCycleDirection="back_and_forth"
+                    app:sliderAutoCycleEnabled="true"
+                    app:sliderCircularHandlerEnabled="true"
+                    app:sliderIndicatorAnimationDuration="600"
+                    app:sliderIndicatorGravity="center_horizontal|bottom"
+                    app:sliderIndicatorMargin="15dp"
+                    app:sliderIndicatorOrientation="horizontal"
+                    app:sliderIndicatorPadding="3dp"
+                    app:sliderIndicatorRadius="2dp"
+                    app:sliderIndicatorSelectedColor="#5A5A5A"
+                    app:sliderIndicatorUnselectedColor="#FFF"
+                    app:sliderScrollTimeInSec="50"
+                    app:sliderStartAutoCycle="true" />
 
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="47dp"
-        android:layout_height="42dp"
-        android:background="@android:drawable/ic_media_play"
-        android:backgroundTint="@android:color/background_dark"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="377dp" />
+            </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0:00"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="402dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="348dp"
-        android:layout_height="wrap_content"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in dolor quis mi tempor commodo ut sed mauris. Suspendisse ac aliquet elit. Aenean ut risus quis purus pulvinar placerat. Ut vitae mauris arcu. Ut ullamcorper dui nibh, eu luctus sapien pharetra eget. In et massa a libero luctus tincidunt rhoncus id lorem. Morbi non tortor mollis, varius ex in, venenatis diam. Etiam ac augue mollis sapien dapibus posuere vitae vitae dolor. "
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="442dp" />
+                <Space
+                    android:layout_width="316dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
 
-</android.support.constraint.ConstraintLayout>
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="66dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/add_photo"
+                    android:backgroundTint="@color/colorPrimary" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="38dp" />
+
+            <Button
+                android:id="@+id/buttonAudios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="  Audios"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/colorSecondary" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="38dp" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ubicación:"
+                android:textColor="@color/colorSecondary" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="49dp" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="394dp"
+                android:layout_height="172dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in dolor quis mi tempor commodo ut sed mauris. Suspendisse ac aliquet elit. Aenean ut risus quis purus pulvinar placerat. Ut vitae mauris arcu. Ut ullamcorper dui nibh, eu luctus sapien pharetra eget. In et massa a libero luctus tincidunt rhoncus id lorem. Morbi non tortor mollis, varius ex in, venenatis diam. Etiam ac augue mollis sapien dapibus posuere vitae vitae dolor. "
+                android:textColor="@android:color/black" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

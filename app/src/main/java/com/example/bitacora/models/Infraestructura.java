@@ -1,9 +1,10 @@
 package com.example.bitacora.models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Infraestructura extends Registro {
-    public Infraestructura(int id, String titulo, String foto, String descripcion, String audio, LocalDate fecha, String ubicacion, double latitud, double longitud) {
-        super(id, titulo, foto, descripcion, audio, fecha, ubicacion, latitud, longitud);
+    public Infraestructura(int id, String titulo, List<String> fotos, String descripcion, List<String> audios, LocalDate fecha, String ubicacion, double latitud, double longitud) {
+        super(id, titulo, fotos, descripcion, audios, fecha, ubicacion, latitud, longitud);
     }
 }

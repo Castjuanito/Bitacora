@@ -3,28 +3,23 @@ package com.example.bitacora.activities.Registro;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.graphics.Bitmap;
-import android.location.Location;
-import android.net.Uri;
-import android.widget.Toast;
-import android.view.View;
 import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import com.example.bitacora.activities.Registro.adapters.ImageAddAdapter;
+import android.widget.Toast;
 
 import com.example.bitacora.R;
 import com.example.bitacora.activities.Registro.location.GPSTracker;
 
-import java.io.InputStream;
-import java.nio.file.Files;
 import java.util.List;
 
 public class CrearRegistroActivity extends AppCompatActivity {
@@ -38,7 +33,7 @@ public class CrearRegistroActivity extends AppCompatActivity {
 
     private List<String> imagesName;
     private List<Bitmap> images;
-    private ImageAddAdapter adapter;
+    //private ImageAddAdapter adapter;
 
     private EditText tituloText;
     private EditText descripcionText;

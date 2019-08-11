@@ -1,25 +1,28 @@
 package com.example.bitacora.models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Registro {
     private int id;
     private String titulo;
-    private String foto;
+    private List <String> fotos;
     private String descripcion;
-    private String audio;
+    private List <String> audios;
     private LocalDate fecha;
     private String ubicacion;
     private double latitud;
     private double longitud;
 
-
-    public Registro(int id, String titulo, String foto, String descripcion, String audio, LocalDate fecha, String ubicacion, double latitud, double longitud) {
+    public Registro(int id){
+        this.id = id;
+    };
+    public Registro(int id, String titulo, List<String> fotos, String descripcion, List<String> audios, LocalDate fecha, String ubicacion, double latitud, double longitud) {
         this.id = id;
         this.titulo = titulo;
-        this.foto = foto;
+        this.fotos = fotos;
         this.descripcion = descripcion;
-        this.audio = audio;
+        this.audios = audios;
         this.fecha = fecha;
         this.ubicacion = ubicacion;
         this.latitud = latitud;
@@ -34,12 +37,12 @@ public class Registro {
         this.titulo = titulo;
     }
 
-    public String getFoto() {
-        return foto;
+    public List <String> getFotos() {
+        return fotos;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setFotos(List<String> fotos) {
+        this.fotos = fotos;
     }
 
     public String getDescripcion() {
@@ -50,12 +53,12 @@ public class Registro {
         this.descripcion = descripcion;
     }
 
-    public String getAudio() {
-        return audio;
+    public List <String> getAudios() {
+        return audios;
     }
 
-    public void setAudio(String audio) {
-        this.audio = audio;
+    public void setAudio(List<String> audios) {
+        this.audios = audios;
     }
 
     public LocalDate getFecha() {
