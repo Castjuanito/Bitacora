@@ -55,12 +55,6 @@ public class AlistamientoItemAdapter extends BaseAdapter {
 
 
 
-
-
-        //fechaTxt.setText(s.getFechaSalida());
-        //ubicacionTxt.setText(s.getUbicacion());
-
-
             return view;
     }
 }

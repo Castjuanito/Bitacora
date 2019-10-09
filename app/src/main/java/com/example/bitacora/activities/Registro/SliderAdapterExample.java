@@ -2,6 +2,7 @@ package com.example.bitacora.activities.Registro;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,7 @@ public class SliderAdapterExample extends
                 Toast.makeText(context, "This is item in position " + position, Toast.LENGTH_SHORT).show();
             }
         });
-
+        Log.d("->>>>>>>>>>>>>", "entro slider: ");
 
         switch (position) {
             case 0:

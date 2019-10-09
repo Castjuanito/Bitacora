@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.bitacora.activities.Viaje.MisViajesActivity"
+    tools:context="com.example.bitacora.activities.Registro.RegistroActivy"
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_marginBottom="2dp"
         android:background="@color/colorSecondary"
         android:gravity="top|bottom"
-        android:text="Recuerdos"
+        android:text="Registro"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="24sp"
@@ -26,6 +26,7 @@
         tools:ignore="UnknownId" />
 
     <ListView
+        android:id="@+id/listViewRegistros"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="1dp"

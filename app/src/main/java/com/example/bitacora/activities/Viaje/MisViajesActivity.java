@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MisViajesActivity extends AppCompatActivity {
 
-    SQLViaje mSQLViaje = new SQLViaje(this);;
+    SQLViaje mSQLViaje = new SQLViaje(this);
     List<Viaje> rowItems;
     ListView mylistview;
 
@@ -31,7 +31,6 @@ public class MisViajesActivity extends AppCompatActivity {
         mSQLViaje = new SQLViaje(this);
         rowItems = new ArrayList<Viaje>();
 
-        //TODO pasar de la base de datos a arrayList de viaje
         rowItems = cargarViajes();
         mylistview = (ListView) findViewById(R.id.listViajes);
         ViajeAdapter adapter = new ViajeAdapter(this, rowItems);

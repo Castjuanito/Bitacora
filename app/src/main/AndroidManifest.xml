@@ -18,18 +18,20 @@
         android:roundIcon="@drawable/escudo_universidad_salle"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.Registro.RegistroActivy" />
+        <activity android:name=".activities.Registro.RegistroActivy" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activities.Viaje.MisViajesActivity" />
         <activity android:name=".activities.Viaje.DetalleViajeActivity" />
         <activity android:name=".activities.Viaje.CrearViajeActivity" />
         <activity android:name=".activities.Registro.CrearRegistroActivity" />
         <activity android:name=".activities.Alistamiento.AlistamientoActivity" />
         <activity android:name=".activities.Main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
