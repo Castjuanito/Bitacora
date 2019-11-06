@@ -7,34 +7,30 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class SQLAlistamiento extends SQLiteOpenHelper {
+public class SQLAudios extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "alistamiento_table";
     private static final String COL1 = "id";//0
-    private static final String COL2 = "idViaje";//1
-    private static final String COL3 = "contenido";//2
-    private static final String COL4 = "estado";//3
+    private static final String COL2 = "idRegistro";//1
+    private static final String COL3 = "ruta";//2
 
-    public SQLAlistamiento(Context context) {
+    public SQLAudios(Context context) {
         super(context, TABLE_NAME, null, 1);
     }
 
-
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME +
                 " (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL2 + " INTEGER," +
                 COL3 + " TEXT," +
-                COL4 + " INTEGER," +
-                "FOREIGN KEY(idViaje) REFERENCES viaje_table(id))";
-        sqLiteDatabase.execSQL(createTable);
-
+                "FOREIGN KEY(idRegistro) REFERENCES registro_table(id))";
+        db.execSQL(createTable);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS TABLE_NAME");
-        onCreate(sqLiteDatabase);
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS TABLE_NAME");
+        onCreate(db);
     }
 
     public Cursor getData(){
@@ -44,23 +40,23 @@ public class SQLAlistamiento extends SQLiteOpenHelper {
         return data;
     }
 
-    public Cursor getDataId(int id){
+    public Cursor getDataidRegistro(int idRegistro){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + id + "'";
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + idRegistro + "'";
         Cursor data = db.rawQuery(query, null);
         return data;
     }
 
-    public int addData(int idViaje, String contenido, int estado) {
+    public int addData(int idRegistro, String ruta) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(COL2, idViaje);
-        contentValues.put(COL3, contenido);
-        contentValues.put(COL4, estado);
+        contentValues.put(COL2, idRegistro);
+        contentValues.put(COL3, ruta);
 
 
-        Log.d("Alistamiento", "addData: Adding " +  idViaje +" "+ contenido +" "+ estado + " to " + TABLE_NAME);
+
+        Log.d("Alistamiento", "addData: Adding " +  idRegistro + " to " + TABLE_NAME);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -73,20 +69,11 @@ public class SQLAlistamiento extends SQLiteOpenHelper {
     }
 
 
-    public void update(int newValue, int id, int oldValue){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "UPDATE " + TABLE_NAME + " SET " + COL4 +
-                " = '" + newValue + "' WHERE " + COL1 + " = '" + id + "'" +
-                " AND " + COL4 + " = '" + oldValue + "'";
-        db.execSQL(query);
-        Log.d("Alistamiento", "update: Adding " +  id  + TABLE_NAME);
-
-    }
-
     public Cursor getDataIdItem(int selectedID, int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + selectedID + "'"+" AND " + COL1 + " = '" + id + "'";
         Cursor data = db.rawQuery(query, null);
         return data;
     }
+
 }

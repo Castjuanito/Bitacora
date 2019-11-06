@@ -59,12 +59,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <android.support.constraint.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="left" />
-
     <ScrollView
         android:id="@+id/scrollCrearRegistro"
         android:layout_width="0dp"
@@ -99,19 +93,19 @@
                 android:id="@+id/editTextDescripcionRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="270dp"
+                android:gravity="top|left"
                 android:layout_marginLeft="40px"
                 android:layout_marginTop="70px"
                 android:layout_marginRight="40px"
                 android:ems="10"
                 android:hint="Descripción"
                 android:inputType="textLongMessage"
-                android:textAlignment="center"
                 android:textColor="@color/colorSecondary"
                 android:textStyle="normal" />
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="422dp"
+                android:layout_height="89dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp">
 
@@ -145,7 +139,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/buttonAñadirFotosCrearRegistro"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
 

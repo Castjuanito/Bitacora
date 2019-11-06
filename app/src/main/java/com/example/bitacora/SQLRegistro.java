@@ -18,14 +18,8 @@ public class SQLRegistro extends SQLiteOpenHelper {
     private static final String COL1 = "id";
     private static final String COL2 = "idViaje";
     private static final String COL3 = "titulo";
-    private static final String COL4 = "foto";
-    private static final String COL5 = "descripcion";
-    private static final String COL6 = "audio";
-    private static final String COL7 = "fecha";
-    private static final String COL8 = "ubicacion";
-    private static final String COL9 = "latitud";
-    private static final String COL10 = "longitud";
-    private static final String COL11 = "tipo";
+    private static final String COL4 = "descripcion";
+    private static final String COL5 = "tipo";
 
 //FOREIGN KEY(trackartist) REFERENCES artist(artistid)
 
@@ -41,12 +35,6 @@ public class SQLRegistro extends SQLiteOpenHelper {
                 COL3 + " TEXT," +
                 COL4 + " TEXT," +
                 COL5 + " TEXT," +
-                COL6 + " TEXT," +
-                COL7 + " TEXT," +
-                COL8 + " TEXT," +
-                COL9 + " TEXT," +
-                COL10 + " TEXT" +
-                COL11 + "TEXT" +
                 "FOREIGN KEY(idViaje) REFERENCES viaje_table(id))";
         db.execSQL(createTable);
     }
@@ -63,17 +51,11 @@ public class SQLRegistro extends SQLiteOpenHelper {
 
         contentValues.put(COL2, idViaje);
         contentValues.put(COL3, titulo);
-        contentValues.put(COL4, foto);
-        contentValues.put(COL5, descripcion);
-        contentValues.put(COL6, audio);
-        contentValues.put(COL7, fecha);
-        contentValues.put(COL8, ubicacion);
-        contentValues.put(COL9, latitud);
-        contentValues.put(COL10, longitud);
-        contentValues.put(COL11, tipo);
+        contentValues.put(COL4, descripcion);
+        contentValues.put(COL5, tipo);
 
 
-        Log.d(TAG, "addData: Adding " +  idViaje +" "+ titulo +" "+ foto +" "+ descripcion +" "+ audio +" "+ fecha +" "+ ubicacion +" "+ latitud +" "+ longitud  +" "+ tipo + " to " + TABLE_NAME);
+        Log.d(TAG, "addData: Adding " +  idViaje +" "+ titulo +" "+ descripcion +" "+ tipo + " to " + TABLE_NAME);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -116,6 +98,7 @@ public class SQLRegistro extends SQLiteOpenHelper {
         Cursor data = db.rawQuery(query, null);
         return data;
     }
+
 
 /*
     /**

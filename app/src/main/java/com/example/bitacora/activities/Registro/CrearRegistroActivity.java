@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,7 +63,7 @@ public class CrearRegistroActivity extends AppCompatActivity {
         this.aniadirFoto = (Button) findViewById(R.id.buttonAñadirFotosCrearRegistro);
 
 
-        if (ContextCompat.checkSelfPermission(this,
+        /*if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -70,23 +71,18 @@ public class CrearRegistroActivity extends AppCompatActivity {
                     REQUEST_READ_EXTERNAL_STORAGE);
         } else {
             updateCargarImagen();
-        }
+        }*/
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermission(this, Manifest.permission.CAMERA,
                     "Para tomar una foto", REQUEST_CAMERA);
         }
-
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            requestPermission(this, Manifest.permission.ACCESS_FINE_LOCATION,
-                    "Para seleccionar una localizacion desde el mapa",
-                    REQUEST_LOCATION);
-        } else {
-            updateGetLocation();
+        else {
+            updateTomarFoto();
         }
+
+
 
     }
 
@@ -106,10 +102,17 @@ public class CrearRegistroActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
                                            @NonNull int[] grantResults) {
         switch (requestCode) {
-            case REQUEST_READ_EXTERNAL_STORAGE: {
+            /*case REQUEST_READ_EXTERNAL_STORAGE: {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     updateCargarImagen();
+                }
+                break;
+            }*/
+            case REQUEST_CAMERA: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    updateTomarFoto();
                 }
                 break;
             }
@@ -127,6 +130,19 @@ public class CrearRegistroActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void updateTomarFoto() {
+        aniadirFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent tomarFoto_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (tomarFoto_intent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(tomarFoto_intent, IMAGE_CAPTURE_REQUEST);
+                }
+            }
+        });
+    }
+
 
     private void updateGetLocation() {
         GPSTracker tracker = new GPSTracker(this);

@@ -142,12 +142,12 @@
                     android:layout_marginEnd="7dp"
                     android:background="@android:color/transparent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonAgregarRecuerdos"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/imageButton4"
+                    android:id="@+id/buttonAgregarRecuerdos"
                     android:layout_width="89dp"
                     android:layout_height="87dp"
                     android:layout_marginTop="4dp"
@@ -195,7 +195,7 @@
                     android:textColor="@color/colorSecondary"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonAgregarPaisaje"
                     app:layout_constraintHorizontal_bias="0.562"
                     app:layout_constraintStart_toEndOf="@+id/imageView6"
                     app:layout_constraintTop_toTopOf="parent"
@@ -208,12 +208,12 @@
                     android:layout_marginEnd="7dp"
                     android:background="@android:color/transparent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonAgregarPaisaje"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/imageButton2"
+                    android:id="@+id/buttonAgregarPaisaje"
                     android:layout_width="89dp"
                     android:layout_height="86dp"
                     android:layout_marginBottom="4dp"
@@ -262,7 +262,7 @@
                     android:textColor="@color/colorSecondary"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton5"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonAgregarMuestra"
                     app:layout_constraintHorizontal_bias="0.73"
                     app:layout_constraintStart_toEndOf="@+id/imageView7"
                     app:layout_constraintTop_toTopOf="parent"
@@ -275,12 +275,12 @@
                     android:layout_marginEnd="7dp"
                     android:background="@android:color/transparent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton5"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonAgregarMuestra"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/imageButton5"
+                    android:id="@+id/buttonAgregarMuestra"
                     android:layout_width="89dp"
                     android:layout_height="101dp"
                     android:layout_marginTop="3dp"
@@ -328,20 +328,20 @@
                     android:textColor="@color/colorSecondary"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonAgregarInfraestructura"
                     app:layout_constraintHorizontal_bias="0.588"
                     app:layout_constraintStart_toEndOf="@+id/imageView8"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.375" />
 
                 <Button
-                    android:id="@+id/buttonInfraestructura"
+                    android:id="@+id/buttonInfraestructuras"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginEnd="7dp"
                     android:background="@android:color/transparent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonAgregarInfraestructura"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -357,14 +357,14 @@
                     app:layout_constraintVertical_bias="0.6" />
 
                 <ImageButton
-                    android:id="@+id/imageButton3"
+                    android:id="@+id/buttonAgregarInfraestructura"
                     android:layout_width="93dp"
                     android:layout_height="84dp"
                     android:layout_marginBottom="4dp"
                     android:background="@android:color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/buttonInfraestructura"
+                    app:layout_constraintStart_toEndOf="@+id/buttonInfraestructuras"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.75"
                     app:srcCompat="@drawable/ic_plus_symbol" />
