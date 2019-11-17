@@ -67,14 +67,15 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonCancelarRegistro"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTituloCreacionRegistroNuevo">
+        app:layout_constraintTop_toBottomOf="@+id/textTituloCreacionRegistroNuevo"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/editTextTituloRegistro"
@@ -93,51 +94,50 @@
                 android:id="@+id/editTextDescripcionRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="270dp"
-                android:gravity="top|left"
                 android:layout_marginLeft="40px"
                 android:layout_marginTop="70px"
                 android:layout_marginRight="40px"
                 android:ems="10"
+                android:gravity="top|left"
                 android:hint="Descripción"
                 android:inputType="textLongMessage"
                 android:textColor="@color/colorSecondary"
                 android:textStyle="normal" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="422dp"
-                android:layout_height="89dp"
+                android:layout_width="match_parent"
+                android:layout_height="214dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp">
 
-                <Button
+                <ImageButton
                     android:id="@+id/buttonAñadirFotosCrearRegistro"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-
-                    android:layout_marginStart="16dp"
+                    android:layout_width="87dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginBottom="27dp"
                     android:background="@drawable/round_button"
-                    android:text="Foto"
-
+                    android:src="@drawable/add_photo"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/buttonAñadirAudioCrearRegistro"
-                    app:layout_constraintStart_toEndOf="@+id/buttonAñadirAudioCrearRegistro"
-                    app:layout_constraintTop_toTopOf="@+id/buttonAñadirAudioCrearRegistro" />
-
-                <Button
-                    android:id="@+id/buttonAñadirAudioCrearRegistro"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/round_button"
-                    android:text="Audio"
-                    android:textColor="@android:color/white"
-
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonAñadirFotosCrearRegistro"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonAñadirAudioCrearRegistro" />
+
+                <ImageButton
+                    android:id="@+id/buttonAñadirAudioCrearRegistro"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/round_button"
+                    android:src="@drawable/ic_microphone"
+                    android:text="Audio"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@+id/buttonAñadirFotosCrearRegistro"
+                    app:layout_constraintEnd_toEndOf="@+id/buttonAñadirFotosCrearRegistro"
+                    app:layout_constraintStart_toStartOf="@+id/buttonAñadirFotosCrearRegistro"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
