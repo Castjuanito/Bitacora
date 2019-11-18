@@ -79,7 +79,10 @@ public class DetalleViajeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent editScreenIntent = new Intent(DetalleViajeActivity.this, CrearRegistroActivity.class);
-                editScreenIntent.putExtra("id",selectedID);
+                Bundle extras = new Bundle();
+                extras.putInt("id",selectedID);
+                extras.putInt("tipo",1);
+                editScreenIntent.putExtras(extras);
                 startActivity(editScreenIntent);
             }
         });
@@ -88,7 +91,10 @@ public class DetalleViajeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent editScreenIntent = new Intent(DetalleViajeActivity.this, CrearRegistroActivity.class);
-                editScreenIntent.putExtra("id",selectedID);
+                Bundle extras = new Bundle();
+                extras.putInt("id",selectedID);
+                extras.putInt("tipo",2);
+                editScreenIntent.putExtras(extras);
                 startActivity(editScreenIntent);
             }
         });
@@ -97,7 +103,10 @@ public class DetalleViajeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent editScreenIntent = new Intent(DetalleViajeActivity.this, CrearRegistroActivity.class);
-                editScreenIntent.putExtra("id",selectedID);
+                Bundle extras = new Bundle();
+                extras.putInt("id",selectedID);
+                extras.putInt("tipo",3);
+                editScreenIntent.putExtras(extras);
                 startActivity(editScreenIntent);
             }
         });
@@ -106,7 +115,10 @@ public class DetalleViajeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent editScreenIntent = new Intent(DetalleViajeActivity.this, CrearRegistroActivity.class);
-                editScreenIntent.putExtra("id",selectedID);
+                Bundle extras = new Bundle();
+                extras.putInt("id",selectedID);
+                extras.putInt("tipo",4);
+                editScreenIntent.putExtras(extras);
                 startActivity(editScreenIntent);
             }
         });

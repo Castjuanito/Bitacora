@@ -34,7 +34,7 @@ public class SQLRegistro extends SQLiteOpenHelper {
                 COL2 + " INTEGER," +
                 COL3 + " TEXT," +
                 COL4 + " TEXT," +
-                COL5 + " TEXT," +
+                COL5 + " INTEGER," +
                 "FOREIGN KEY(idViaje) REFERENCES viaje_table(id))";
         db.execSQL(createTable);
     }
@@ -45,7 +45,7 @@ public class SQLRegistro extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addData(int idViaje, String titulo, String foto, String descripcion, String audio, String fecha, String ubicacion, String latitud, String longitud, String tipo) {
+    public int addData(int idViaje, String titulo, String descripcion,int tipo) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -61,9 +61,9 @@ public class SQLRegistro extends SQLiteOpenHelper {
 
         //if date as inserted incorrectly it will return -1
         if (result == -1) {
-            return false;
+            return -1;
         } else {
-            return true;
+            return (int)result;
         }
     }
 

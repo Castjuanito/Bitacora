@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -20,10 +21,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.bitacora.R;
 import com.example.bitacora.SQLRegistro;
+import com.example.bitacora.SQLFotos;
+import com.example.bitacora.SQLAudios;
 import com.example.bitacora.activities.Registro.location.GPSTracker;
 
 import java.io.BufferedReader;
@@ -38,21 +42,32 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
+import static android.Manifest.permission.RECORD_AUDIO;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class CrearRegistroActivity extends AppCompatActivity {
 
-    private static final String FILE_NAME = "example.txt";
+    private  String textFile;
     String currentPhotoPath;
+    private MediaRecorder mRecorder;
+    private static final String LOG_TAG = "AudioRecording";
+    private static String mFileName = null;
 
 
     private static final int REQUEST_READ_EXTERNAL_STORAGE = 392;
     private static final int REQUEST_CAMERA = 485;
     private static final int IMAGE_CAPTURE_REQUEST = 615;
     private static final int IMAGE_PICKER_REQUEST = 31;
+    public static final int REQUEST_AUDIO_PERMISSION_CODE = 1;
 
     private List<String> imagesName;
-    private List<Bitmap> images;
+    private List<String> recordingsName;
     //private ImageAddAdapter adapter;
+
+    private int selectedID;
+    private int tipo;
 
     private EditText tituloText;
     private EditText descripcionText;
@@ -60,8 +75,9 @@ public class CrearRegistroActivity extends AppCompatActivity {
     private Button crearButton;
     private Button cancelarButton;
 
-    private Button aniadirAudio;
-    private Button aniadirFoto;
+    private ImageButton gravarAudio;
+    private ImageButton pararGravacion;
+    private ImageButton aniadirFoto;
 
 
     double latitude = 0; // latitude
@@ -71,8 +87,14 @@ public class CrearRegistroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_registro);
+        Intent receivedIntent = getIntent();
+        Bundle extras = receivedIntent.getExtras();
+        selectedID = extras.getInt("id",-1);
+        tipo = extras.getInt("tipo",-1);
 
-        SQLRegistro mSQLAlistamiento = new SQLRegistro(this);
+        final SQLRegistro mSQLRegistro = new SQLRegistro(this);
+        final SQLFotos mSQLFotos = new SQLFotos(this);
+        final SQLAudios mSQLAudios = new SQLAudios(this);
 
         this.tituloText = (EditText) findViewById(R.id.editTextTituloRegistro);
         this.descripcionText = (EditText) findViewById(R.id.editTextDescripcionRegistro);
@@ -80,11 +102,15 @@ public class CrearRegistroActivity extends AppCompatActivity {
         this.crearButton = (Button) findViewById(R.id.buttonCrearRegistro);
         this.cancelarButton = (Button) findViewById(R.id.buttonCancelarRegistro);
 
-        this.aniadirAudio = (Button) findViewById(R.id.buttonAñadirAudioCrearRegistro);
-        this.aniadirFoto = (Button) findViewById(R.id.buttonAñadirFotosCrearRegistro);
+        this.gravarAudio = (ImageButton) findViewById(R.id.buttonAñadirAudioCrearRegistro);
+        this.pararGravacion = (ImageButton) findViewById(R.id.imageButtonPararGrabacion);
+        this.aniadirFoto = (ImageButton) findViewById(R.id.buttonAñadirFotosCrearRegistro);
+
+        pararGravacion.setEnabled(false);
+        pararGravacion.setVisibility(View.GONE);
 
         imagesName = new ArrayList<String>();
-        images = new ArrayList<>();
+        recordingsName = new ArrayList<>();
 
         /*if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -107,12 +133,72 @@ public class CrearRegistroActivity extends AppCompatActivity {
             updateTomarFoto();
         }
 
+        gravarAudio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(CheckPermissions()) {
+                    pararGravacion.setEnabled(true);
+                    pararGravacion.setVisibility(View.VISIBLE);
+                    gravarAudio.setEnabled(false);
+                    gravarAudio.setVisibility(View.GONE);
+                    mRecorder = new MediaRecorder();
+                    mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+                    mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+                    mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+                    File audio = null;
+                    try {
+                        audio = getAudioFile();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    mRecorder.setOutputFile(audio.getAbsolutePath());
+                    try {
+                        mRecorder.prepare();
+                    } catch (IOException e) {
+                        Log.e(LOG_TAG, "prepare() failed");
+                    }
+                    mRecorder.start();
+                    Toast.makeText(getApplicationContext(), "Recording Started", Toast.LENGTH_LONG).show();
+                    recordingsName.add(audio.getAbsolutePath());
+                }
+                else
+                {
+                    RequestPermissions();
+                }
+            }
+        });
+
+        pararGravacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pararGravacion.setEnabled(false);
+                pararGravacion.setVisibility(View.GONE);
+                gravarAudio.setVisibility(View.VISIBLE);
+                gravarAudio.setEnabled(true);
+                mRecorder.stop();
+                mRecorder.release();
+                mRecorder = null;
+                Toast.makeText(getApplicationContext(), "Recording Stopped", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
         crearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String titulo = tituloText.getText().toString();
-                String file =  save();
-                addToGallery();
+                textFile =  save();
+                int insertData = (int) mSQLRegistro.addData(selectedID,titulo,textFile,tipo);
+                for (int i = 0; i < imagesName.size(); i++) {
+                    System.out.println(recordingsName.get(i));
+                    int insertData2 = (int) mSQLAudios.addData(insertData,recordingsName.get(i));
+                }
+                for (int i = 0; i < imagesName.size(); i++) {
+                    System.out.println(imagesName.get(i));
+                    int insertData3 = (int) mSQLFotos.addData(insertData,imagesName.get(i));
+                }
+                // addToGallery();
             }
         });
 
@@ -151,12 +237,30 @@ public class CrearRegistroActivity extends AppCompatActivity {
             case REQUEST_CAMERA: {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    updateTomarFoto();
                 }
                 break;
             }
-
+            case REQUEST_AUDIO_PERMISSION_CODE:
+                if (grantResults.length > 0) {
+                    boolean permissionToRecord = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean permissionToStore = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                    if (permissionToRecord && permissionToStore) {
+                        Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_LONG).show();
+                    }
+                }
+                break;
         }
+    }
+
+    public boolean CheckPermissions() {
+        int result = ContextCompat.checkSelfPermission(getApplicationContext(), WRITE_EXTERNAL_STORAGE);
+        int result1 = ContextCompat.checkSelfPermission(getApplicationContext(), RECORD_AUDIO);
+        return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED;
+    }
+    private void RequestPermissions() {
+        ActivityCompat.requestPermissions(CrearRegistroActivity.this, new String[]{RECORD_AUDIO, WRITE_EXTERNAL_STORAGE}, REQUEST_AUDIO_PERMISSION_CODE);
     }
 
     @Override
@@ -177,23 +281,11 @@ public class CrearRegistroActivity extends AppCompatActivity {
     }
 
 
-    private void updateCargarImagen() {
-        aniadirFoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent cargarImagen_intent = new Intent(Intent.ACTION_PICK);
-                cargarImagen_intent.setType("image/*");
-                startActivityForResult(cargarImagen_intent, IMAGE_PICKER_REQUEST);
-            }
-        });
-    }
-
     private void updateTomarFoto() {
         aniadirFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendTakePictureIntent();
-
             }
         });
     }
@@ -206,29 +298,40 @@ public class CrearRegistroActivity extends AppCompatActivity {
         currentPhotoPath = image.getAbsolutePath();
             return image;
         }
+    private File getAudioFile() throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String pictureFile = "Bitacora_" + timeStamp;
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_MUSIC);
+        File image = File.createTempFile(pictureFile,  ".3gp", storageDir);
 
-
-    private void updateGetLocation() {
-        GPSTracker tracker = new GPSTracker(this);
-        if (!tracker.canGetLocation()) {
-            tracker.showSettingsAlert();
-        } else {
-            this.latitude = tracker.getLatitude();
-            this.longitude = tracker.getLongitude();
-        }
+        return image;
     }
+    private File getTextFile() throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String pictureFile = "Bitacora_" + timeStamp;
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
+        File image = File.createTempFile(pictureFile,  ".txt", storageDir);
+
+        return image;
+    }
+
+
 
     public String save() {
         String text = descripcionText.getText().toString();
         FileOutputStream fos = null;
-
+        File texto = null;
         try {
-            fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
+            texto = getTextFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+
+            fos = openFileOutput(texto.getName(), MODE_PRIVATE);
             fos.write(text.getBytes());
 
             descripcionText.getText().clear();
-            Toast.makeText(this, "Saved to " + getFilesDir() + "/" + FILE_NAME,
-                    Toast.LENGTH_LONG).show();
 
 
         } catch (FileNotFoundException e) {
@@ -244,14 +347,14 @@ public class CrearRegistroActivity extends AppCompatActivity {
                 }
             }
         }
-        return getFilesDir() + "/" + FILE_NAME;
+        return getFilesDir() + "/" + texto.getName();
     }
 
     public void load() {
         FileInputStream fis = null;
 
         try {
-            fis = openFileInput(FILE_NAME);
+            fis = new FileInputStream (new File(textFile));
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader br = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
@@ -297,7 +400,7 @@ public class CrearRegistroActivity extends AppCompatActivity {
         Intent tomarFoto_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         tomarFoto_intent.putExtra(MediaStore.EXTRA_FINISH_ON_COMPLETION, true);
         if (tomarFoto_intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(tomarFoto_intent, IMAGE_CAPTURE_REQUEST);
+           //  startActivityForResult(tomarFoto_intent, IMAGE_CAPTURE_REQUEST);
             File pictureFile = null;
             try {
                 pictureFile = getPictureFile();
@@ -313,6 +416,7 @@ public class CrearRegistroActivity extends AppCompatActivity {
                         pictureFile);
                 tomarFoto_intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(tomarFoto_intent, IMAGE_CAPTURE_REQUEST);
+                imagesName.add(pictureFile.getAbsolutePath());
             }
         }
     }
