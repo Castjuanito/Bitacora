@@ -1,12 +1,10 @@
 package com.example.bitacora.models;
 
-import java.time.LocalDate;
-
 public class Viaje {
-    private int id;
     String fechaSalida;
     String materia;
     String profesor;
+    private int id;
     private String ubicacion;
     private double latitud;
     private double longitud;

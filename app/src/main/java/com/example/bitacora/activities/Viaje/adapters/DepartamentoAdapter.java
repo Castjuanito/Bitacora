@@ -52,7 +52,7 @@ public class DepartamentoAdapter extends ArrayAdapter<Departamento> {
         Departamento state = getItem(position);
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.departamento_list, null);
-        TextView textView =  v.findViewById(R.id.spinnerTextDep);
+        TextView textView = v.findViewById(R.id.spinnerTextDep);
         textView.setText(state.getDepartamentoName());
         return v;
 

@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.bitacora.R;
-import com.example.bitacora.models.Viaje;
 
 import java.util.List;
 
@@ -34,13 +33,12 @@ public class FotosAdapters extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        if(view==null)
-        {
-            view= LayoutInflater.from(context).inflate(R.layout.item_audio,viewGroup,false);
+        if (view == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.item_audio, viewGroup, false);
         }
 
-        TextView fechaTxt= (TextView) view.findViewById(R.id.fecha);
-        TextView ubicacionTxt= (TextView) view.findViewById(R.id.trayecto);
+        TextView fechaTxt = view.findViewById(R.id.fecha);
+        TextView ubicacionTxt = view.findViewById(R.id.trayecto);
 
 
         return view;

@@ -6,17 +6,18 @@ import java.util.List;
 public class Registro {
     private int id;
     private String titulo;
-    private List <String> fotos;
+    private List<String> fotos;
     private String descripcion;
-    private List <String> audios;
+    private List<String> audios;
     private LocalDate fecha;
     private String ubicacion;
     private double latitud;
     private double longitud;
 
-    public Registro(int id){
+    public Registro(int id) {
         this.id = id;
-    };
+    }
+
     public Registro(int id, String titulo, List<String> fotos, String descripcion, List<String> audios, LocalDate fecha, String ubicacion, double latitud, double longitud) {
         this.id = id;
         this.titulo = titulo;
@@ -37,7 +38,7 @@ public class Registro {
         this.titulo = titulo;
     }
 
-    public List <String> getFotos() {
+    public List<String> getFotos() {
         return fotos;
     }
 
@@ -53,7 +54,7 @@ public class Registro {
         this.descripcion = descripcion;
     }
 
-    public List <String> getAudios() {
+    public List<String> getAudios() {
         return audios;
     }
 

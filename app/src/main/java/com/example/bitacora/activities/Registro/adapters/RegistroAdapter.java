@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.example.bitacora.R;
 import com.example.bitacora.activities.Registro.SliderAdapterExample;
 import com.example.bitacora.models.Registro;
-import com.example.bitacora.models.Viaje;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -51,13 +50,12 @@ public class RegistroAdapter extends BaseAdapter {
 
         Log.d("->>>>>>>>>>>>>", "entro registro: ");
 
-        view= LayoutInflater.from(context).inflate(R.layout.item_record,viewGroup,false);
+        view = LayoutInflater.from(context).inflate(R.layout.item_record, viewGroup, false);
 
-        TextView fechaTxt= (TextView) view.findViewById(R.id.textViewTituloRecord);
+        TextView fechaTxt = view.findViewById(R.id.textViewTituloRecord);
 
 
-
-        final Registro s= (Registro) this.getItem(position);
+        final Registro s = (Registro) this.getItem(position);
 
         fechaTxt.setText(Integer.toString(s.getId()));
 

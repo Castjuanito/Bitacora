@@ -40,13 +40,13 @@ public class AlistamientoItemAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-            view= LayoutInflater.from(context).inflate(R.layout.item_check,viewGroup,false);
+        view = LayoutInflater.from(context).inflate(R.layout.item_check, viewGroup, false);
 
 
-        CheckBox estado= (CheckBox) view.findViewById(R.id.checkBox);
+        CheckBox estado = view.findViewById(R.id.checkBox);
 
 
-        final AlistamientoItem s= (AlistamientoItem) this.getItem(i);
+        final AlistamientoItem s = (AlistamientoItem) this.getItem(i);
 
         estado.setId(i);
 
@@ -54,7 +54,6 @@ public class AlistamientoItemAdapter extends BaseAdapter {
         estado.setChecked(s.getEstado());
 
 
-
-            return view;
+        return view;
     }
 }

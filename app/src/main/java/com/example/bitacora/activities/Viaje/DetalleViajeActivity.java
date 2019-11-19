@@ -2,13 +2,13 @@ package com.example.bitacora.activities.Viaje;
 
 import android.content.Intent;
 import android.database.Cursor;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bitacora.R;
 import com.example.bitacora.SQLViaje;
@@ -17,9 +17,7 @@ import com.example.bitacora.activities.Registro.CrearRegistroActivity;
 
 public class DetalleViajeActivity extends AppCompatActivity {
 
-    private int selectedID;
     SQLViaje mSQLViaje;
-
     TextView titulo;
     TextView profesor;
     TextView materia;
@@ -28,9 +26,7 @@ public class DetalleViajeActivity extends AppCompatActivity {
     ImageButton buttonAgregarPaisaje;
     ImageButton buttonAgregarMuestra;
     ImageButton buttonAgregarInfraestructura;
-
-
-
+    private int selectedID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +34,17 @@ public class DetalleViajeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalle_viaje);
 
         Intent receivedIntent = getIntent();
-        selectedID = receivedIntent.getIntExtra("id",-1);
+        selectedID = receivedIntent.getIntExtra("id", -1);
         mSQLViaje = new SQLViaje(this);
-        buttonAlistamiento = (Button) findViewById(R.id.buttonAlistamiento);
-        buttonAgregarRecuerdos = (ImageButton) findViewById(R.id.buttonAgregarRecuerdos);
-        buttonAgregarPaisaje = (ImageButton) findViewById(R.id.buttonAgregarPaisaje);
-        buttonAgregarMuestra = (ImageButton) findViewById(R.id.buttonAgregarMuestra);
-        buttonAgregarInfraestructura = (ImageButton) findViewById(R.id.buttonAgregarInfraestructura);
+        buttonAlistamiento = findViewById(R.id.buttonAlistamiento);
+        buttonAgregarRecuerdos = findViewById(R.id.buttonAgregarRecuerdos);
+        buttonAgregarPaisaje = findViewById(R.id.buttonAgregarPaisaje);
+        buttonAgregarMuestra = findViewById(R.id.buttonAgregarMuestra);
+        buttonAgregarInfraestructura = findViewById(R.id.buttonAgregarInfraestructura);
 
-        titulo = (TextView) findViewById(R.id.textTitulo);
-        profesor = (TextView) findViewById(R.id.textViewProfesor);
-        materia = (TextView) findViewById(R.id.textViewMateria);
+        titulo = findViewById(R.id.textTitulo);
+        profesor = findViewById(R.id.textViewProfesor);
+        materia = findViewById(R.id.textViewMateria);
 
         String fecha;
         String mat;
@@ -56,21 +52,21 @@ public class DetalleViajeActivity extends AppCompatActivity {
         String ubicacion;
         Cursor viaje = mSQLViaje.getItemByID(selectedID);
 
-        while(viaje.moveToNext()) {
-             fecha = viaje.getString(1);
-             mat = viaje.getString(2);
-             prof = viaje.getString(3);
-             ubicacion = viaje.getString(4);
-            titulo.setText(fecha+ ' ' +ubicacion);
-            profesor.setText("Profesor: "+prof);
-            materia.setText("Materia: "+mat);
+        while (viaje.moveToNext()) {
+            fecha = viaje.getString(1);
+            mat = viaje.getString(2);
+            prof = viaje.getString(3);
+            ubicacion = viaje.getString(4);
+            titulo.setText(fecha + ' ' + ubicacion);
+            profesor.setText("Profesor: " + prof);
+            materia.setText("Materia: " + mat);
         }
 
         buttonAlistamiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent editScreenIntent = new Intent(DetalleViajeActivity.this, AlistamientoActivity.class);
-                editScreenIntent.putExtra("id",selectedID);
+                editScreenIntent.putExtra("id", selectedID);
                 startActivity(editScreenIntent);
             }
         });
@@ -80,8 +76,8 @@ public class DetalleViajeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent editScreenIntent = new Intent(DetalleViajeActivity.this, CrearRegistroActivity.class);
                 Bundle extras = new Bundle();
-                extras.putInt("id",selectedID);
-                extras.putInt("tipo",1);
+                extras.putInt("id", selectedID);
+                extras.putInt("tipo", 1);
                 editScreenIntent.putExtras(extras);
                 startActivity(editScreenIntent);
             }
@@ -92,8 +88,8 @@ public class DetalleViajeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent editScreenIntent = new Intent(DetalleViajeActivity.this, CrearRegistroActivity.class);
                 Bundle extras = new Bundle();
-                extras.putInt("id",selectedID);
-                extras.putInt("tipo",2);
+                extras.putInt("id", selectedID);
+                extras.putInt("tipo", 2);
                 editScreenIntent.putExtras(extras);
                 startActivity(editScreenIntent);
             }
@@ -104,8 +100,8 @@ public class DetalleViajeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent editScreenIntent = new Intent(DetalleViajeActivity.this, CrearRegistroActivity.class);
                 Bundle extras = new Bundle();
-                extras.putInt("id",selectedID);
-                extras.putInt("tipo",3);
+                extras.putInt("id", selectedID);
+                extras.putInt("tipo", 3);
                 editScreenIntent.putExtras(extras);
                 startActivity(editScreenIntent);
             }
@@ -116,8 +112,8 @@ public class DetalleViajeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent editScreenIntent = new Intent(DetalleViajeActivity.this, CrearRegistroActivity.class);
                 Bundle extras = new Bundle();
-                extras.putInt("id",selectedID);
-                extras.putInt("tipo",4);
+                extras.putInt("id", selectedID);
+                extras.putInt("tipo", 4);
                 editScreenIntent.putExtras(extras);
                 startActivity(editScreenIntent);
             }

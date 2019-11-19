@@ -3,11 +3,9 @@ package com.example.bitacora;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
 
 
 public class SQLRegistro extends SQLiteOpenHelper {
@@ -45,7 +43,7 @@ public class SQLRegistro extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public int addData(int idViaje, String titulo, String descripcion,int tipo) {
+    public int addData(int idViaje, String titulo, String descripcion, int tipo) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -55,7 +53,7 @@ public class SQLRegistro extends SQLiteOpenHelper {
         contentValues.put(COL5, tipo);
 
 
-        Log.d(TAG, "addData: Adding " +  idViaje +" "+ titulo +" "+ descripcion +" "+ tipo + " to " + TABLE_NAME);
+        Log.d(TAG, "addData: Adding " + idViaje + " " + titulo + " " + descripcion + " " + tipo + " to " + TABLE_NAME);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -63,15 +61,16 @@ public class SQLRegistro extends SQLiteOpenHelper {
         if (result == -1) {
             return -1;
         } else {
-            return (int)result;
+            return (int) result;
         }
     }
 
     /**
      * Returns all the data from database
+     *
      * @return
      */
-    public Cursor getData(){
+    public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
         Cursor data = db.rawQuery(query, null);
@@ -80,10 +79,11 @@ public class SQLRegistro extends SQLiteOpenHelper {
 
     /**
      * Returns only the ID that matches the name passed in
+     *
      * @param id
      * @return
      */
-    public Cursor getItemByID(Integer id){
+    public Cursor getItemByID(Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * " + " FROM " + TABLE_NAME +
                 " WHERE " + COL1 + " = '" + id + "'";
@@ -91,7 +91,7 @@ public class SQLRegistro extends SQLiteOpenHelper {
         return data;
     }
 
-    public Cursor getItemByIDPadre(Integer id){
+    public Cursor getItemByIDPadre(Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * " + " FROM " + TABLE_NAME +
                 " WHERE " + COL2 + " = '" + id + "'";

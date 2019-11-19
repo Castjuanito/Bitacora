@@ -1,7 +1,7 @@
 package com.example.bitacora.models;
 
 public class AlistamientoItem {
-    private  int id;
+    private int id;
     private String contenido;
     private Boolean estado;
 
@@ -37,9 +37,9 @@ public class AlistamientoItem {
     }
 
     public void changeEstado() {
-        if (this.estado==false)
-            this.estado=true;
-        if (this.estado==true)
-            this.estado=false;
+        if (this.estado == false)
+            this.estado = true;
+        if (this.estado == true)
+            this.estado = false;
     }
 }

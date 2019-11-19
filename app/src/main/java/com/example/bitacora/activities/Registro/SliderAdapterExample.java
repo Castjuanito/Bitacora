@@ -24,10 +24,6 @@ public class SliderAdapterExample extends
         this.context = context;
     }
 
-    public void setCount(int count) {
-        this.mCount = count;
-    }
-
     @Override
     public SliderAdapterVH onCreateViewHolder(ViewGroup parent) {
         View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_foto, null);
@@ -100,6 +96,10 @@ public class SliderAdapterExample extends
     public int getCount() {
         //slider view count could be dynamic size
         return mCount;
+    }
+
+    public void setCount(int count) {
+        this.mCount = count;
     }
 
     class SliderAdapterVH extends SliderViewAdapter.ViewHolder {

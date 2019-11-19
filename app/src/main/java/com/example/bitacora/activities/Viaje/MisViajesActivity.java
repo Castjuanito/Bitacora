@@ -2,12 +2,13 @@ package com.example.bitacora.activities.Viaje;
 
 import android.content.Intent;
 import android.database.Cursor;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bitacora.R;
 import com.example.bitacora.SQLViaje;
@@ -32,17 +33,16 @@ public class MisViajesActivity extends AppCompatActivity {
         rowItems = new ArrayList<Viaje>();
 
         rowItems = cargarViajes();
-        mylistview = (ListView) findViewById(R.id.listViajes);
+        mylistview = findViewById(R.id.listViajes);
         ViajeAdapter adapter = new ViajeAdapter(this, rowItems);
         mylistview.setAdapter(adapter);
-        mylistview.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
+        mylistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 int member_name = rowItems.get(i).getId();
                 Intent editScreenIntent = new Intent(MisViajesActivity.this, DetalleViajeActivity.class);
-                editScreenIntent.putExtra("id",member_name);
+                editScreenIntent.putExtra("id", member_name);
                 startActivity(editScreenIntent);
 
             }
@@ -51,17 +51,15 @@ public class MisViajesActivity extends AppCompatActivity {
     }
 
 
-
-
     private List<Viaje> cargarViajes() {
 
         Cursor data = mSQLViaje.getData();
-        while(data.moveToNext()){
+        while (data.moveToNext()) {
             //get the value from the database in column 1
             //then add it to the ArrayList
             int id = Integer.parseInt(data.getString(0));
             Log.d("id", data.getString(0));
-            Viaje mViaje = new Viaje(id,data.getString(1),data.getString(4));
+            Viaje mViaje = new Viaje(id, data.getString(1), data.getString(4));
             rowItems.add(mViaje);
         }
         return rowItems;

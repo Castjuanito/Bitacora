@@ -33,14 +33,14 @@ public class SQLFotos extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public Cursor getData(){
+    public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
         Cursor data = db.rawQuery(query, null);
         return data;
     }
 
-    public Cursor getDataidRegistro(int idRegistro){
+    public Cursor getDataidRegistro(int idRegistro) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + idRegistro + "'";
         Cursor data = db.rawQuery(query, null);
@@ -55,8 +55,7 @@ public class SQLFotos extends SQLiteOpenHelper {
         contentValues.put(COL3, ruta);
 
 
-
-        Log.d("Alistamiento", "addData: Adding " +  idRegistro + " to " + TABLE_NAME);
+        Log.d("Alistamiento", "addData: Adding " + idRegistro + " to " + TABLE_NAME);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -71,7 +70,7 @@ public class SQLFotos extends SQLiteOpenHelper {
 
     public Cursor getDataIdItem(int selectedID, int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + selectedID + "'"+" AND " + COL1 + " = '" + id + "'";
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + selectedID + "'" + " AND " + COL1 + " = '" + id + "'";
         Cursor data = db.rawQuery(query, null);
         return data;
     }

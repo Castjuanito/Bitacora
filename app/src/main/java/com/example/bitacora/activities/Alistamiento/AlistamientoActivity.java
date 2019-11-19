@@ -1,4 +1,5 @@
 package com.example.bitacora.activities.Alistamiento;
+
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,7 +14,6 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.example.bitacora.R;
 import com.example.bitacora.SQLAlistamiento;
 import com.example.bitacora.activities.Viaje.adapters.AlistamientoItemAdapter;
@@ -22,11 +22,9 @@ import com.example.bitacora.models.AlistamientoItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlistamientoActivity extends AppCompatActivity{
+public class AlistamientoActivity extends AppCompatActivity {
 
     SQLAlistamiento mSQLAlistamiento = new SQLAlistamiento(this);
-
-    private int selectedID;
     List<AlistamientoItem> rowItems;
     ListView mylistview;
     CheckBox checkBox;
@@ -34,6 +32,7 @@ public class AlistamientoActivity extends AppCompatActivity{
     ImageButton añadir;
     Context con;
     AlistamientoItemAdapter adapter;
+    private int selectedID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,31 +43,29 @@ public class AlistamientoActivity extends AppCompatActivity{
         con = this;
         rowItems = new ArrayList<AlistamientoItem>();
         Intent receivedIntent = getIntent();
-        selectedID = receivedIntent.getIntExtra("id",-1);
+        selectedID = receivedIntent.getIntExtra("id", -1);
         rowItems = cargarItems();
-        nuevoItem = (EditText)findViewById(R.id.editTextItem);
-        añadir = (ImageButton)findViewById(R.id.imageButtonAñadirItem);
-        mylistview = (ListView) findViewById(R.id.AlistListView);
+        nuevoItem = findViewById(R.id.editTextItem);
+        añadir = findViewById(R.id.imageButtonAñadirItem);
+        mylistview = findViewById(R.id.AlistListView);
         adapter = new AlistamientoItemAdapter(this, rowItems);
         mylistview.setAdapter(adapter);
 
-        mylistview.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
+        mylistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //Toast.makeText(getApplicationContext(),"------------------algo",Toast.LENGTH_SHORT).show();
-                checkBox = (CheckBox) findViewById(i);
+                checkBox = findViewById(i);
 
                 //TODO actualizar en las bases de datos
-                if (checkBox.isChecked()){
+                if (checkBox.isChecked()) {
                     checkBox.setChecked(false);
-                    mSQLAlistamiento.update(0,rowItems.get(i).getId(),1);
+                    mSQLAlistamiento.update(0, rowItems.get(i).getId(), 1);
                     rowItems.get(i).setEstado(false);
-                }
-                else{
+                } else {
                     checkBox.setChecked(true);
-                    mSQLAlistamiento.update(1,rowItems.get(i).getId(),0);
+                    mSQLAlistamiento.update(1, rowItems.get(i).getId(), 0);
                     rowItems.get(i).setEstado(true);
                 }
                 adapter.notifyDataSetChanged();
@@ -77,9 +74,9 @@ public class AlistamientoActivity extends AppCompatActivity{
         añadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (nuevoItem.getText().toString().length()>0) {
-                    int id=mSQLAlistamiento.addData(selectedID, nuevoItem.getText().toString(), 0);
-                    Cursor data = mSQLAlistamiento.getDataIdItem(selectedID,id);
+                if (nuevoItem.getText().toString().length() > 0) {
+                    int id = mSQLAlistamiento.addData(selectedID, nuevoItem.getText().toString(), 0);
+                    Cursor data = mSQLAlistamiento.getDataIdItem(selectedID, id);
                     while (data.moveToNext()) {
                         int id1 = Integer.parseInt(data.getString(0));
                         Log.d("id", data.getString(0));
@@ -101,14 +98,14 @@ public class AlistamientoActivity extends AppCompatActivity{
 
     private List<AlistamientoItem> cargarItems() {
         Cursor data = mSQLAlistamiento.getDataId(selectedID);
-        while(data.moveToNext()){
+        while (data.moveToNext()) {
             //get the value from the database in column 1
             //then add it to the ArrayList
             int id = Integer.parseInt(data.getString(0));
             Log.d("id", data.getString(0));
             int estado = Integer.parseInt(data.getString(3));
             boolean est = (estado != 0);
-            AlistamientoItem mAlistamientoItem = new AlistamientoItem(id,data.getString(2),est);
+            AlistamientoItem mAlistamientoItem = new AlistamientoItem(id, data.getString(2), est);
             rowItems.add(mAlistamientoItem);
         }
         return rowItems;

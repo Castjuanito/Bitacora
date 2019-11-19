@@ -1,10 +1,11 @@
 package com.example.bitacora.activities.Main;
 
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bitacora.R;
 import com.example.bitacora.SQLRegistro;
@@ -23,23 +24,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        misViajes = (Button) findViewById(R.id.buttonMisViajes);
-        crearViaje = (Button) findViewById(R.id.buttonIniciarViaje);
+        misViajes = findViewById(R.id.buttonMisViajes);
+        crearViaje = findViewById(R.id.buttonIniciarViaje);
 
-        misViajes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MisViajesActivity.class);
-                startActivity(intent);
-            }
+        misViajes.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, MisViajesActivity.class);
+            startActivity(intent);
         });
 
-        crearViaje.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CrearViajeActivity.class);
-                startActivity(intent);
-            }
+        crearViaje.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, CrearViajeActivity.class);
+            startActivity(intent);
         });
     }
 

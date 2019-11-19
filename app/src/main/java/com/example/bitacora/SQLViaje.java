@@ -3,7 +3,6 @@ package com.example.bitacora;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -26,7 +25,6 @@ public class SQLViaje extends SQLiteOpenHelper {
     private static final String COL7 = "longitud";
 
 
-
     public SQLViaje(Context context) {
         super(context, TABLE_NAME, null, 1);
     }
@@ -35,12 +33,12 @@ public class SQLViaje extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME +
                 " (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL2 +" TEXT," +
-                COL3 +" TEXT," +
-                COL4 +" TEXT," +
-                COL5 +" TEXT," +
-                COL6 +" TEXT," +
-                COL7 +" TEXT)";
+                COL2 + " TEXT," +
+                COL3 + " TEXT," +
+                COL4 + " TEXT," +
+                COL5 + " TEXT," +
+                COL6 + " TEXT," +
+                COL7 + " TEXT)";
         db.execSQL(createTable);
         Log.d(TABLE_NAME, " creada ");
 
@@ -63,7 +61,7 @@ public class SQLViaje extends SQLiteOpenHelper {
         contentValues.put(COL6, latitud);
         contentValues.put(COL7, longitud);
 
-        Log.d(TAG, "addData: Adding " +  fechaSalida + materia + profesor + ubicacion + latitud + longitud  + " to " + TABLE_NAME);
+        Log.d(TAG, "addData: Adding " + fechaSalida + materia + profesor + ubicacion + latitud + longitud + " to " + TABLE_NAME);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -77,9 +75,10 @@ public class SQLViaje extends SQLiteOpenHelper {
 
     /**
      * Returns all the data from database
+     *
      * @return
      */
-    public Cursor getData(){
+    public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
         Cursor data = db.rawQuery(query, null);
@@ -88,10 +87,11 @@ public class SQLViaje extends SQLiteOpenHelper {
 
     /**
      * Returns only the ID that matches the name passed in
+     *
      * @param id
      * @return
      */
-    public Cursor getItemByID(Integer id){
+    public Cursor getItemByID(Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * " + " FROM " + TABLE_NAME +
                 " WHERE " + COL1 + " = '" + id + "'";

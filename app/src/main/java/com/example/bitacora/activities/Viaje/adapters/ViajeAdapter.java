@@ -39,19 +39,17 @@ public class ViajeAdapter extends BaseAdapter {
     }
 
 
-
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        if(view==null)
-        {
-            view= LayoutInflater.from(context).inflate(R.layout.item_viajes,viewGroup,false);
+        if (view == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.item_viajes, viewGroup, false);
         }
 
-        TextView fechaTxt= (TextView) view.findViewById(R.id.fecha);
-        TextView ubicacionTxt= (TextView) view.findViewById(R.id.trayecto);
+        TextView fechaTxt = view.findViewById(R.id.fecha);
+        TextView ubicacionTxt = view.findViewById(R.id.trayecto);
 
 
-        final Viaje s= (Viaje) this.getItem(position);
+        final Viaje s = (Viaje) this.getItem(position);
 
         fechaTxt.setText(s.getFechaSalida());
         ubicacionTxt.setText(s.getUbicacion());

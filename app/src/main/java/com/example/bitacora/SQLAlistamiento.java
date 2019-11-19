@@ -37,14 +37,14 @@ public class SQLAlistamiento extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public Cursor getData(){
+    public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
         Cursor data = db.rawQuery(query, null);
         return data;
     }
 
-    public Cursor getDataId(int id){
+    public Cursor getDataId(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + id + "'";
         Cursor data = db.rawQuery(query, null);
@@ -60,7 +60,7 @@ public class SQLAlistamiento extends SQLiteOpenHelper {
         contentValues.put(COL4, estado);
 
 
-        Log.d("Alistamiento", "addData: Adding " +  idViaje +" "+ contenido +" "+ estado + " to " + TABLE_NAME);
+        Log.d("Alistamiento", "addData: Adding " + idViaje + " " + contenido + " " + estado + " to " + TABLE_NAME);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
@@ -73,19 +73,19 @@ public class SQLAlistamiento extends SQLiteOpenHelper {
     }
 
 
-    public void update(int newValue, int id, int oldValue){
+    public void update(int newValue, int id, int oldValue) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "UPDATE " + TABLE_NAME + " SET " + COL4 +
                 " = '" + newValue + "' WHERE " + COL1 + " = '" + id + "'" +
                 " AND " + COL4 + " = '" + oldValue + "'";
         db.execSQL(query);
-        Log.d("Alistamiento", "update: Adding " +  id  + TABLE_NAME);
+        Log.d("Alistamiento", "update: Adding " + id + TABLE_NAME);
 
     }
 
     public Cursor getDataIdItem(int selectedID, int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + selectedID + "'"+" AND " + COL1 + " = '" + id + "'";
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + selectedID + "'" + " AND " + COL1 + " = '" + id + "'";
         Cursor data = db.rawQuery(query, null);
         return data;
     }
