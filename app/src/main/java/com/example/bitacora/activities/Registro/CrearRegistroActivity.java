@@ -180,7 +180,7 @@ public class CrearRegistroActivity extends AppCompatActivity {
                 });
 
                 Toast.makeText(getApplicationContext(), "Se ha creado de manera exitosa el registro !", Toast.LENGTH_LONG).show();
-            }else{
+            } else {
                 Toast.makeText(getApplicationContext(), "Por favor ingrese todos los datos !", Toast.LENGTH_LONG).show();
             }
         });
@@ -302,7 +302,7 @@ public class CrearRegistroActivity extends AppCompatActivity {
     public String save() {
         String text = descripcionText.getText().toString();
         // Don't repeat this please
-        if (text.equalsIgnoreCase("")){
+        if (text.equalsIgnoreCase("")) {
             return "Error";
         }
         FileOutputStream fos = null;

@@ -31,7 +31,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 
@@ -88,7 +87,7 @@ public class CrearViajeActivity extends AppCompatActivity {
                     + " Date is : " + dayOfMonth + " / " + (month + 1) + " / " + year
                     + " teacher : " + profe + " materia: " + mat, Toast.LENGTH_SHORT).show();
 
-            if (!isAValidDate(dayOfMonth, month, year)){
+            if (!isAValidDate(dayOfMonth, month, year)) {
                 Toast.makeText(getApplicationContext(), "Fecha invalida !", Toast.LENGTH_SHORT).show();
             }
             if (profe.length() != 0 && mat.length() != 0 && isAValidDate(dayOfMonth, month, year)) {
@@ -141,7 +140,7 @@ public class CrearViajeActivity extends AppCompatActivity {
 
     }
 
-    private boolean isAValidDate(int day, int month, int year){
+    private boolean isAValidDate(int day, int month, int year) {
         Calendar now = Calendar.getInstance();
         now.set(Calendar.HOUR_OF_DAY, 0);
         now.set(Calendar.MINUTE, 0);

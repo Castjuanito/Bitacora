@@ -77,6 +77,14 @@ public class SQLRegistro extends SQLiteOpenHelper {
         return data;
     }
 
+    public Cursor getDataByViajeAndTipo(int idViaje, int tipo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME +
+                " WHERE " + COL2 + " = '" + idViaje + "' AND " + COL3 + " = '" + tipo + "'";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
     /**
      * Returns only the ID that matches the name passed in
      *

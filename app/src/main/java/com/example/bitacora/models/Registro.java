@@ -1,5 +1,9 @@
 package com.example.bitacora.models;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,16 +22,14 @@ public class Registro {
         this.id = id;
     }
 
-    public Registro(int id, String titulo, List<String> fotos, String descripcion, List<String> audios, LocalDate fecha, String ubicacion, double latitud, double longitud) {
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public Registro(int id, String titulo, List<String> fotos, String descripcion, List<String> audios) {
         this.id = id;
         this.titulo = titulo;
         this.fotos = fotos;
         this.descripcion = descripcion;
         this.audios = audios;
-        this.fecha = fecha;
-        this.ubicacion = ubicacion;
-        this.latitud = latitud;
-        this.longitud = longitud;
+        this.fecha = LocalDate.now();
     }
 
     public String getTitulo() {
