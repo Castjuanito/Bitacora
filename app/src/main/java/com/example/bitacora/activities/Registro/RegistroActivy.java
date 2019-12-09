@@ -29,7 +29,7 @@ public class RegistroActivy extends AppCompatActivity {
         setContentView(R.layout.activity_registro);
 
         Intent intent = getIntent();
-        idViaje = intent.getIntExtra("idViaje",-1);
+        idViaje = intent.getIntExtra("viajeId",-1);
         tipo = intent.getIntExtra("tipo", -1);
 
         rowItems = SQLRegistroToRegistroParser.toRegistros(idViaje,tipo,this);

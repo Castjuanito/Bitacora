@@ -27,6 +27,12 @@ public class DetalleViajeActivity extends AppCompatActivity {
     ImageButton buttonAgregarPaisaje;
     ImageButton buttonAgregarMuestra;
     ImageButton buttonAgregarInfraestructura;
+    Button buttonRecuerdos;
+    Button buttonPaisajes;
+    Button buttonMuestras;
+    Button buttonInfraestructuras;
+
+
     private int selectedID;
 
     @Override
@@ -42,6 +48,12 @@ public class DetalleViajeActivity extends AppCompatActivity {
         buttonAgregarPaisaje = findViewById(R.id.buttonAgregarPaisaje);
         buttonAgregarMuestra = findViewById(R.id.buttonAgregarMuestra);
         buttonAgregarInfraestructura = findViewById(R.id.buttonAgregarInfraestructura);
+
+        buttonRecuerdos = findViewById(R.id.buttonRecuerdos);
+        buttonPaisajes = findViewById(R.id.buttonPaisajes);
+        buttonMuestras = findViewById(R.id.buttonMuestras);
+        buttonInfraestructuras = findViewById(R.id.buttonInfraestructuras);
+
 
         titulo = findViewById(R.id.textTitulo);
         profesor = findViewById(R.id.textViewProfesor);
@@ -75,7 +87,7 @@ public class DetalleViajeActivity extends AppCompatActivity {
         buttonAgregarRecuerdos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent editScreenIntent = new Intent(DetalleViajeActivity.this, RegistroActivy.class);
+                Intent editScreenIntent = new Intent(DetalleViajeActivity.this, CrearRegistroActivity.class);
                 Bundle extras = new Bundle();
                 extras.putInt("viajeId", selectedID);
                 extras.putInt("tipo", 1);
@@ -87,7 +99,7 @@ public class DetalleViajeActivity extends AppCompatActivity {
         buttonAgregarPaisaje.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent editScreenIntent = new Intent(DetalleViajeActivity.this, RegistroActivy.class);
+                Intent editScreenIntent = new Intent(DetalleViajeActivity.this, CrearRegistroActivity.class);
                 Bundle extras = new Bundle();
                 extras.putInt("viajeId", selectedID);
                 extras.putInt("tipo", 2);
@@ -99,7 +111,7 @@ public class DetalleViajeActivity extends AppCompatActivity {
         buttonAgregarMuestra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent editScreenIntent = new Intent(DetalleViajeActivity.this, RegistroActivy.class);
+                Intent editScreenIntent = new Intent(DetalleViajeActivity.this, CrearRegistroActivity.class);
                 Bundle extras = new Bundle();
                 extras.putInt("viajeId", selectedID);
                 extras.putInt("tipo", 3);
@@ -111,6 +123,55 @@ public class DetalleViajeActivity extends AppCompatActivity {
         buttonAgregarInfraestructura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent editScreenIntent = new Intent(DetalleViajeActivity.this, CrearRegistroActivity.class);
+                Bundle extras = new Bundle();
+                extras.putInt("viajeId", selectedID);
+                extras.putInt("tipo", 4);
+                editScreenIntent.putExtras(extras);
+                startActivity(editScreenIntent);
+            }
+        });
+
+
+        buttonRecuerdos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent editScreenIntent = new Intent(DetalleViajeActivity.this, RegistroActivy.class);
+                Bundle extras = new Bundle();
+                extras.putInt("viajeId", selectedID);
+                extras.putInt("tipo", 1);
+                editScreenIntent.putExtras(extras);
+                startActivity(editScreenIntent);
+            }
+        });
+
+        buttonPaisajes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent editScreenIntent = new Intent(DetalleViajeActivity.this, RegistroActivy.class);
+                Bundle extras = new Bundle();
+                extras.putInt("viajeId", selectedID);
+                extras.putInt("tipo", 2);
+                editScreenIntent.putExtras(extras);
+                startActivity(editScreenIntent);
+            }
+        });
+
+        buttonMuestras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent editScreenIntent = new Intent(DetalleViajeActivity.this, RegistroActivy.class);
+                Bundle extras = new Bundle();
+                extras.putInt("viajeId", selectedID);
+                extras.putInt("tipo", 3);
+                editScreenIntent.putExtras(extras);
+                startActivity(editScreenIntent);
+            }
+        });
+
+        buttonInfraestructuras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent editScreenIntent = new Intent(DetalleViajeActivity.this, RegistroActivy.class);
                 Bundle extras = new Bundle();
                 extras.putInt("viajeId", selectedID);

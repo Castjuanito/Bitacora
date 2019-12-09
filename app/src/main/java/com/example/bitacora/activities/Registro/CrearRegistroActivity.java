@@ -28,6 +28,8 @@ import com.example.bitacora.R;
 import com.example.bitacora.SQLAudios;
 import com.example.bitacora.SQLFotos;
 import com.example.bitacora.SQLRegistro;
+import com.example.bitacora.activities.Alistamiento.AlistamientoActivity;
+import com.example.bitacora.activities.Viaje.DetalleViajeActivity;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -79,7 +81,7 @@ public class CrearRegistroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_crear_registro);
         Intent receivedIntent = getIntent();
         Bundle extras = receivedIntent.getExtras();
-        selectedID = extras != null ? extras.getInt("id", -1) : 0;
+        selectedID = extras != null ? extras.getInt("viajeId", -1) : 0;
         tipo = extras.getInt("tipo", -1);
 
         final SQLRegistro mSQLRegistro = new SQLRegistro(this);
@@ -183,6 +185,10 @@ public class CrearRegistroActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(), "Por favor ingrese todos los datos !", Toast.LENGTH_LONG).show();
             }
+
+            Intent editScreenIntent = new Intent(CrearRegistroActivity.this, DetalleViajeActivity.class);
+            editScreenIntent.putExtra("id", selectedID);
+            startActivity(editScreenIntent);
         });
 
         cancelarButton.setOnClickListener(v -> {
